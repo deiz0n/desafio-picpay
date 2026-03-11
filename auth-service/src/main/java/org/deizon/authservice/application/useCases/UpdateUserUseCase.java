@@ -5,5 +5,5 @@ import org.deizon.authservice.domain.UserModel;
 import java.util.UUID;
 
 public interface UpdateUserUseCase {
-    UserModel execute(UUID userId);
+    UserModel execute(UUID userId, UserModel user);
 }
