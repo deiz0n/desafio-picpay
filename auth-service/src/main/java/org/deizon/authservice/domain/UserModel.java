@@ -8,5 +8,6 @@ public record UserModel(
         String cpf,
         String cnpj,
         String email,
-        String password
+        String password,
+        RoleEnum role
 ) {}
