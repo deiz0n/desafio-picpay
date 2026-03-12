@@ -1,4 +1,4 @@
-package org.deizon.authservice.infrastructure.ports.persistence;
+package org.deizon.authservice.infrastructure.adapters.persistence;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;

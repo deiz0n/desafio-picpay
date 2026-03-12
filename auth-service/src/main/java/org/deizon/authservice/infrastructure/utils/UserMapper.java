@@ -1,7 +1,7 @@
 package org.deizon.authservice.infrastructure.utils;
 
 import org.deizon.authservice.domain.UserModel;
-import org.deizon.authservice.infrastructure.ports.persistence.UserEntity;
+import org.deizon.authservice.infrastructure.adapters.persistence.UserEntity;
 
 public class UserMapper {
 

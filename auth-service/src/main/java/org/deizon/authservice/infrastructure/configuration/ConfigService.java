@@ -3,7 +3,6 @@ package org.deizon.authservice.infrastructure.configuration;
 import org.deizon.authservice.application.ports.UserRepositoryPort;
 import org.deizon.authservice.application.services.*;
 import org.deizon.authservice.application.useCases.*;
-import org.deizon.authservice.infrastructure.ports.persistence.repositories.UserRepositoryImpl;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 

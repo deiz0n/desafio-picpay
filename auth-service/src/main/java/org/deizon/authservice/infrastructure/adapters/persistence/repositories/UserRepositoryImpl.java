@@ -1,8 +1,8 @@
-package org.deizon.authservice.infrastructure.ports.persistence.repositories;
+package org.deizon.authservice.infrastructure.adapters.persistence.repositories;
 
 import org.deizon.authservice.application.ports.UserRepositoryPort;
 import org.deizon.authservice.domain.UserModel;
-import org.deizon.authservice.infrastructure.ports.persistence.UserEntity;
+import org.deizon.authservice.infrastructure.adapters.persistence.UserEntity;
 import org.deizon.authservice.infrastructure.utils.UserMapper;
 import org.springframework.stereotype.Component;
 
