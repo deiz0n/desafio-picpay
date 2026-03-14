@@ -3,6 +3,10 @@ package org.deizon.authservice.infrastructure.adapters.web.controllers;
 import jakarta.validation.Valid;
 import org.deizon.authservice.application.useCases.*;
 import org.deizon.authservice.domain.UserModel;
+import org.deizon.authservice.infrastructure.adapters.web.UserWebMapper;
+import org.deizon.authservice.infrastructure.adapters.web.dtos.user.CreateUserDTO;
+import org.deizon.authservice.infrastructure.adapters.web.dtos.user.UpdateUserDTO;
+import org.deizon.authservice.infrastructure.adapters.web.dtos.user.UserResponseDTO;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -34,9 +38,11 @@ public class UserRestController {
     }
 
     @PostMapping
-    public ResponseEntity<UserModel> create(@RequestBody @Valid UserModel user) {
-        UserModel response = createUserUseCase.execute(user);
-        return ResponseEntity.ok(response);
+    public ResponseEntity<UserResponseDTO> create(@RequestBody @Valid CreateUserDTO user) {
+        UserModel response = createUserUseCase.execute(UserWebMapper.toUserModel(user));
+        return ResponseEntity.ok(
+                UserWebMapper.toUserResponseDTO(response)
+        );
     }
 
     @DeleteMapping("/{userId}")
@@ -46,20 +52,28 @@ public class UserRestController {
     }
 
     @GetMapping
-    public ResponseEntity<List<UserModel>> readUsers() {
+    public ResponseEntity<List<UserResponseDTO>> readUsers() {
         List<UserModel> response = readUsersUseCase.execute();
-        return ResponseEntity.ok(response);
+        return ResponseEntity.ok(
+                response.stream()
+                        .map(UserWebMapper::toUserResponseDTO)
+                        .toList()
+        );
     }
 
     @GetMapping("/{userId}")
-    public ResponseEntity<UserModel> readUser(@PathVariable UUID userId) {
+    public ResponseEntity<UserResponseDTO> readUser(@PathVariable UUID userId) {
         UserModel response = readUserUseCase.execute(userId);
-        return ResponseEntity.ok(response);
+        return ResponseEntity.ok(
+                UserWebMapper.toUserResponseDTO(response)
+        );
     }
 
     @PatchMapping("/{userId}")
-    public ResponseEntity<?> update(@PathVariable UUID userId, @RequestBody @Valid UserModel user) {
-        UserModel response = updateUserUseCase.execute(userId, user);
-        return ResponseEntity.ok(response);
+    public ResponseEntity<UserResponseDTO> update(@PathVariable UUID userId, @RequestBody @Valid UpdateUserDTO user) {
+        UserModel response = updateUserUseCase.execute(userId, UserWebMapper.toUserModel(user));
+        return ResponseEntity.ok(
+                UserWebMapper.toUserResponseDTO(response)
+        );
     }
 }
