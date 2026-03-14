@@ -1,5 +1,6 @@
 package org.deizon.authservice.infrastructure.adapters.web.controllers;
 
+import jakarta.validation.Valid;
 import org.deizon.authservice.infrastructure.adapters.web.dtos.LoginDTO;
 import org.deizon.authservice.infrastructure.adapters.web.dtos.TokenDTO;
 import org.deizon.authservice.infrastructure.security.services.AuthService;
@@ -20,7 +21,7 @@ public class AuthRestController {
     }
 
     @PostMapping("/login")
-    public ResponseEntity<TokenDTO> login(@RequestBody LoginDTO loginDTO) {
+    public ResponseEntity<TokenDTO> login(@RequestBody @Valid LoginDTO loginDTO) {
         TokenDTO response =  authService.login(loginDTO);
         return ResponseEntity.ok(response);
     }
