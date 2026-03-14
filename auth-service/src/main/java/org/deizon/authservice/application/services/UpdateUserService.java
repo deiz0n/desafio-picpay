@@ -1,5 +1,6 @@
 package org.deizon.authservice.application.services;
 
+import org.deizon.authservice.application.ports.PasswordEncoderPort;
 import org.deizon.authservice.application.ports.UserRepositoryPort;
 import org.deizon.authservice.application.useCases.UpdateUserUseCase;
 import org.deizon.authservice.domain.UserModel;
@@ -14,9 +15,11 @@ import java.util.UUID;
 public class UpdateUserService implements UpdateUserUseCase {
 
     private final UserRepositoryPort repository;
+    private final PasswordEncoderPort passwordEncoder;
 
-    public UpdateUserService(UserRepositoryPort repository) {
+    public UpdateUserService(UserRepositoryPort repository, PasswordEncoderPort passwordEncoder) {
         this.repository = repository;
+        this.passwordEncoder = passwordEncoder;
     }
 
     @Override
@@ -33,7 +36,11 @@ public class UpdateUserService implements UpdateUserUseCase {
                 updateIfNotNull(user.cpf(), userModel.cpf()),
                 updateIfNotNull(user.cnpj(), userModel.cnpj()),
                 updateIfNotNull(user.email(), userModel.email()),
-                updateIfNotNull(user.password(), userModel.password()),
+
+                user.password() != null
+                    ? passwordEncoder.encode(user.password())
+                    : userModel.password(),
+
                 user.role() != null ? user.role() : userModel.role()
         );
 
