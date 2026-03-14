@@ -1,5 +1,6 @@
 package org.deizon.authservice.infrastructure.configuration;
 
+import org.deizon.authservice.application.ports.PasswordEncoderPort;
 import org.deizon.authservice.application.ports.UserRepositoryPort;
 import org.deizon.authservice.application.services.*;
 import org.deizon.authservice.application.useCases.*;
@@ -10,8 +11,11 @@ import org.springframework.context.annotation.Configuration;
 public class ConfigService {
 
     @Bean
-    public CreateUserUseCase getCreateUserService(UserRepositoryPort repository) {
-        return new CreateUserService(repository);
+    public CreateUserUseCase getCreateUserService(
+            UserRepositoryPort repository,
+            PasswordEncoderPort passwordEncoder
+    ) {
+        return new CreateUserService(repository, passwordEncoder);
     }
 
     @Bean
@@ -30,7 +34,10 @@ public class ConfigService {
     }
 
     @Bean
-    public UpdateUserUseCase getUpdateUserService(UserRepositoryPort repository) {
-        return new UpdateUserService(repository);
+    public UpdateUserUseCase getUpdateUserService(
+            UserRepositoryPort repository,
+            PasswordEncoderPort passwordEncoder
+    ) {
+        return new UpdateUserService(repository, passwordEncoder);
     }
 }
