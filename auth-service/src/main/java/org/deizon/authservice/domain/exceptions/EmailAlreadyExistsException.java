@@ -1,0 +1,7 @@
+package org.deizon.authservice.domain.exceptions;
+
+public class EmailAlreadyExistsException extends CreationUserException {
+    public EmailAlreadyExistsException(String message) {
+        super(message);
+    }
+}
