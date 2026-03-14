@@ -1,4 +1,4 @@
-package org.deizon.authservice.infrastructure.adapters.web;
+package org.deizon.authservice.infrastructure.adapters.web.controllers;
 
 import jakarta.validation.Valid;
 import org.deizon.authservice.application.useCases.*;

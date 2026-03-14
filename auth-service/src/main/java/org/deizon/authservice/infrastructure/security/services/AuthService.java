@@ -1,7 +1,7 @@
 package org.deizon.authservice.infrastructure.security.services;
 
-import org.deizon.authservice.domain.dtos.LoginDTO;
-import org.deizon.authservice.domain.dtos.TokenDTO;
+import org.deizon.authservice.infrastructure.adapters.web.dtos.LoginDTO;
+import org.deizon.authservice.infrastructure.adapters.web.dtos.TokenDTO;
 import org.deizon.authservice.infrastructure.adapters.persistence.UserEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;

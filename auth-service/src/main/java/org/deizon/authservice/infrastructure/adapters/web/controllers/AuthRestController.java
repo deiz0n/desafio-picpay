@@ -1,7 +1,7 @@
-package org.deizon.authservice.infrastructure.adapters.web;
+package org.deizon.authservice.infrastructure.adapters.web.controllers;
 
-import org.deizon.authservice.domain.dtos.LoginDTO;
-import org.deizon.authservice.domain.dtos.TokenDTO;
+import org.deizon.authservice.infrastructure.adapters.web.dtos.LoginDTO;
+import org.deizon.authservice.infrastructure.adapters.web.dtos.TokenDTO;
 import org.deizon.authservice.infrastructure.security.services.AuthService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;

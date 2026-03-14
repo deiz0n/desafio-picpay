@@ -1,8 +1,8 @@
-package org.deizon.authservice.infrastructure.adapters.web;
+package org.deizon.authservice.infrastructure.adapters.web.controllers;
 
 import com.auth0.jwt.exceptions.JWTVerificationException;
 import com.auth0.jwt.exceptions.TokenExpiredException;
-import org.deizon.authservice.domain.dtos.ErrorDTO;
+import org.deizon.authservice.infrastructure.adapters.web.dtos.ErrorDTO;
 import org.deizon.authservice.domain.exceptions.*;
 import org.jspecify.annotations.Nullable;
 import org.springframework.http.HttpHeaders;
@@ -19,7 +19,6 @@ import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 import org.springframework.web.servlet.resource.NoResourceFoundException;
 
-import javax.naming.AuthenticationException;
 import java.util.Objects;
 
 @RestControllerAdvice
